@@ -74,27 +74,6 @@
     "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
 }
 
-/* Dark Mode */
-.dark {
-  --bg-primary: #0a1628;
-  --bg-secondary: #0f1f3a;
-  --bg-gradient-start: #0a1628;
-  --bg-gradient-end: #0f1f3a;
-
-  --text-primary: #e8edf5;
-  --text-secondary: #a8b9d4;
-  --text-muted: #7a8db0;
-  --text-light: rgba(232, 237, 245, 0.6);
-
-  --border-color: rgba(144, 202, 249, 0.15);
-  --border-hover: #2196f3;
-  --card-bg: #0f1f3a;
-
-  --shadow-primary: rgba(33, 150, 243, 0.15);
-  --shadow-hover: rgba(33, 150, 243, 0.25);
-  --shadow-card: 0 4px 24px rgba(33, 150, 243, 0.05);
-}
-
 /* Reset & Base */
 * {
   border-color: var(--border-color);
