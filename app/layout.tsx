@@ -239,6 +239,15 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9DB5V72VD"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-H9DB5V72VD');
+        </script>
+        
         {/* Theme Script */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
 
