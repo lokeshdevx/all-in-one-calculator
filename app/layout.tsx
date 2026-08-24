@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+
 import "./globals.css";
+
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
@@ -31,12 +34,16 @@ const jetbrainsMono = JetBrains_Mono({
 
 // Metadata Configuration
 export const metadata: Metadata = {
+  metadataBase: new URL("https://calculateanything.com"),
+
   title: {
     default: "Calculate Anything — 360+ Free Calculators & Converters",
     template: "%s | Calculate Anything",
   },
+
   description:
     "Access 360+ accurate calculators for math, finance, unit conversion, science, and everyday life. Every result shows its formula and step-by-step working. Free and easy to use.",
+
   keywords: [
     "calculators",
     "free calculators",
@@ -54,12 +61,15 @@ export const metadata: Metadata = {
     "math tools",
     "finance tools",
   ],
+
   authors: [
     { name: "Calculate Anything Team" },
     { url: "https://calculateanything.com" },
   ],
+
   creator: "Calculate Anything",
   publisher: "Calculate Anything",
+
   robots: {
     index: true,
     follow: true,
@@ -71,6 +81,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -78,16 +89,17 @@ export const metadata: Metadata = {
     siteName: "Calculate Anything",
     title: "Calculate Anything — 360+ Free Calculators & Converters",
     description:
-      "Access 360+ accurate calculators for math, finance, unit conversion, science, and everyday life. Every result shows its formula and step-by-step working.",
+      "Access 360+ accurate calculators for math, finance, unit conversion, science, and everyday life with step-by-step working.",
     images: [
       {
-        url: "https://calculateanything.com/og-image.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Calculate Anything - Free Online Calculators",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     site: "@calculateany",
@@ -95,26 +107,42 @@ export const metadata: Metadata = {
     title: "Calculate Anything — 360+ Free Calculators & Converters",
     description:
       "Access 360+ accurate calculators for math, finance, unit conversion, science, and everyday life.",
-    images: ["https://calculateanything.com/og-image.jpg"],
+    images: ["/og-image.jpg"],
   },
+
   alternates: {
-    canonical: "https://calculateanything.com",
+    canonical: "/",
     languages: {
-      "en-US": "https://calculateanything.com",
-      "en-GB": "https://calculateanything.com",
+      "en-US": "/",
+      "en-GB": "/",
     },
   },
+
   category: "education",
   classification: "Educational Tools",
+
   manifest: "/manifest.json",
+
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      {
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
     ],
     other: [
       {
@@ -124,13 +152,16 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   verification: {
+    // Replace these placeholder values with your actual verification codes.
     google: "your-google-verification-code",
     yandex: "your-yandex-verification-code",
     other: {
       "msvalidate.01": "your-bing-verification-code",
     },
   },
+
   other: {
     "msapplication-TileColor": "#2196F3",
     "theme-color": "#2196F3",
@@ -145,10 +176,18 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
+
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2196F3" },
-    { media: "(prefers-color-scheme: dark)", color: "#0D47A1" },
+    {
+      media: "(prefers-color-scheme: light)",
+      color: "#2196F3",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: "#0D47A1",
+    },
   ],
+
   colorScheme: "light dark",
 };
 
@@ -156,20 +195,33 @@ export const viewport: Viewport = {
 const themeInitScript = `
 (function () {
   try {
-    var stored = localStorage.getItem('theme') || 'system';
-    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var isDark = stored === 'dark' || (stored === 'system' && systemDark);
-    if (isDark) document.documentElement.classList.add('dark');
-    
-    // Handle system theme changes
-    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', function(e) {
-      var currentTheme = localStorage.getItem('theme') || 'system';
-      if (currentTheme === 'system') {
+    var stored = localStorage.getItem("theme") || "system";
+
+    var systemDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    var isDark =
+      stored === "dark" ||
+      (stored === "system" && systemDark);
+
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    }
+
+    var mediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+
+    mediaQuery.addEventListener("change", function (e) {
+      var currentTheme =
+        localStorage.getItem("theme") || "system";
+
+      if (currentTheme === "system") {
         if (e.matches) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add("dark");
         } else {
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.remove("dark");
         }
       }
     });
@@ -177,7 +229,7 @@ const themeInitScript = `
 })();
 `;
 
-// Organization Schema
+// Organization / Web Application Schema
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -185,15 +237,17 @@ const organizationSchema = {
   description:
     "360+ accurate calculators for math, finance, unit conversion, science, and everyday life with step-by-step solutions.",
   url: "https://calculateanything.com",
-  applicationCategory: "Educational Application",
+  applicationCategory: "EducationalApplication",
   operatingSystem: "All",
   browserRequirements: "Requires JavaScript",
+
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
     availability: "https://schema.org/InStock",
   },
+
   author: {
     "@type": "Organization",
     name: "Calculate Anything Team",
@@ -206,6 +260,7 @@ const websiteSchema = {
   "@type": "WebSite",
   name: "Calculate Anything",
   url: "https://calculateanything.com",
+
   potentialAction: {
     "@type": "SearchAction",
     target: "https://calculateanything.com/search?q={search_term_string}",
@@ -217,6 +272,7 @@ const websiteSchema = {
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
+
   itemListElement: [
     {
       "@type": "ListItem",
@@ -229,9 +285,9 @@ const breadcrumbSchema = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html
       lang="en"
@@ -239,31 +295,51 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9DB5V72VD"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-H9DB5V72VD"
+          strategy="afterInteractive"
+        />
 
-          gtag('config', 'G-H9DB5V72VD');
-        </script>
-        
-        {/* Theme Script */}
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
 
-        {/* Structured Data */}
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+
+            gtag("js", new Date());
+            gtag("config", "G-H9DB5V72VD");
+          `}
+        </Script>
+
+        {/* Theme Initialization */}
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: themeInitScript,
+          }}
+        />
+
+        {/* Organization Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
         />
+
+        {/* Website Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteSchema),
           }}
         />
+
+        {/* Breadcrumb Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -271,8 +347,9 @@ export default function RootLayout({
           }}
         />
 
-        {/* Preconnect to CDN Resources */}
+        {/* Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -281,14 +358,18 @@ export default function RootLayout({
 
         {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
-        {/* Preload Critical Resources */}
+        {/* Preload */}
         <link rel="preload" href="/favicon.ico" as="image" />
       </head>
+
       <body className="min-h-full flex flex-col bg-white dark:bg-[#0a1628] transition-colors duration-300">
         <Header />
+
         <main className="flex-1">{children}</main>
+
         <Footer />
       </body>
     </html>
