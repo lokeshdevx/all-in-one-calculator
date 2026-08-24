@@ -1,0 +1,371 @@
+@import "tailwindcss";
+
+/*
+  Design language: "Modern Blue"
+  A clean, professional design with a blue color palette,
+  featuring gradient accents, glassmorphism effects, and smooth animations.
+  Every calculator is treated like a precision instrument with clear visual hierarchy.
+*/
+
+:root {
+  /* Primary Colors */
+  --primary: #2196f3;
+  --primary-dark: #0d47a1;
+  --primary-light: #e3f2fd;
+  --primary-medium: #90caf9;
+
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8faff;
+  --bg-gradient-start: #e3f2fd;
+  --bg-gradient-end: #ffffff;
+
+  /* Text Colors */
+  --text-primary: #0d47a1;
+  --text-secondary: #3c5a8a;
+  --text-muted: #6b7fa3;
+  --text-light: rgba(13, 71, 161, 0.6);
+
+  /* Border & Card Colors */
+  --border-color: rgba(144, 202, 249, 0.3);
+  --border-hover: #2196f3;
+  --card-bg: #ffffff;
+
+  /* Shadow Colors */
+  --shadow-primary: rgba(33, 150, 243, 0.2);
+  --shadow-hover: rgba(33, 150, 243, 0.3);
+  --shadow-card: 0 4px 24px rgba(33, 150, 243, 0.08);
+
+  /* Status Colors */
+  --success: #4caf50;
+  --error: #f44336;
+  --warning: #ffc107;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-primary-medium: var(--primary-medium);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border-color);
+  --color-card: var(--card-bg);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+
+  /* Typography */
+  --font-display:
+    "Space Grotesk", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+}
+
+/* Dark Mode */
+.dark {
+  --bg-primary: #0a1628;
+  --bg-secondary: #0f1f3a;
+  --bg-gradient-start: #0a1628;
+  --bg-gradient-end: #0f1f3a;
+
+  --text-primary: #e8edf5;
+  --text-secondary: #a8b9d4;
+  --text-muted: #7a8db0;
+  --text-light: rgba(232, 237, 245, 0.6);
+
+  --border-color: rgba(144, 202, 249, 0.15);
+  --border-hover: #2196f3;
+  --card-bg: #0f1f3a;
+
+  --shadow-primary: rgba(33, 150, 243, 0.15);
+  --shadow-hover: rgba(33, 150, 243, 0.25);
+  --shadow-card: 0 4px 24px rgba(33, 150, 243, 0.05);
+}
+
+/* Reset & Base */
+* {
+  border-color: var(--border-color);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-end) 100%
+  );
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cards */
+.card-modern {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+}
+
+.card-modern:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+.dark .glass {
+  background: rgba(15, 31, 58, 0.8);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px var(--shadow-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px var(--shadow-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+  background: var(--primary-light);
+}
+
+/* The instrument readout - updated with blue theme */
+.readout {
+  background: linear-gradient(
+    145deg,
+    var(--primary-dark) 0%,
+    var(--primary) 140%
+  );
+  color: #ffffff;
+  border-radius: 1rem;
+  position: relative;
+  padding: 1.5rem 2rem 1.5rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.2);
+}
+
+.dark .readout {
+  background: linear-gradient(145deg, #060a14 0%, var(--primary-dark) 160%);
+}
+
+.readout::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15) 0px,
+    rgba(255, 255, 255, 0.15) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(33, 150, 243, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Readout Enter Animation */
+@media (prefers-reduced-motion: no-preference) {
+  .readout-enter {
+    animation: readout-fade-in 0.3s ease-out;
+  }
+}
+
+@keyframes readout-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-medium);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Selection */
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .readout {
+    padding: 1rem 1.5rem 1rem 2rem;
+  }
+  .readout::before {
+    width: 1.25rem;
+  }
+}
