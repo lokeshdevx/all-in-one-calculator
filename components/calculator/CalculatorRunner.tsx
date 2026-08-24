@@ -272,9 +272,9 @@ export default function CalculatorRunner({
                   <span className="text-3xl sm:text-4xl font-mono-num font-bold text-[#0D47A1] break-words">
                     {output.result}
                   </span>
-                  {output.unit && (
+                  {output?.unit && (
                     <span className="ml-2 text-lg text-[#0D47A1]/60 font-medium">
-                      {output.unit}
+                      {output?.unit}
                     </span>
                   )}
                 </div>

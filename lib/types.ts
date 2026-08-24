@@ -6,14 +6,24 @@ export interface CalcStep {
 }
 
 export type CalcOutput =
-  | { ok: true; result: string; numeric?: number; steps: CalcStep[] }
+  | {
+      ok: true;
+      result: string;
+      numeric?: number;
+      steps: CalcStep[];
+      unit?: string;
+    }
   | { ok: false; error: string };
 
 export function fail(error: string): CalcOutput {
   return { ok: false, error };
 }
 
-export function ok(result: string, steps: CalcStep[], numeric?: number): CalcOutput {
+export function ok(
+  result: string,
+  steps: CalcStep[],
+  numeric?: number,
+): CalcOutput {
   return { ok: true, result, steps, numeric };
 }
 
